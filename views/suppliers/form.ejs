@@ -1,0 +1,19 @@
+<div class="card p-4 shadow-sm">
+  <div class="mb-3">
+    <label for="name" class="form-label">Tên nhà cung cấp</label>
+    <input type="text" name="name" id="name" class="form-control" 
+           value="<%= supplier ? supplier.name : '' %>" required>
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">Địa chỉ</label>
+    <input type="text" name="address" id="address" class="form-control" 
+           value="<%= supplier ? supplier.address : '' %>">
+  </div>
+  <div class="mb-3">
+    <label for="phone" class="form-label">Số điện thoại</label>
+    <input type="text" name="phone" id="phone" class="form-control" 
+           value="<%= supplier ? supplier.phone : '' %>">
+  </div>
+  <button type="submit" class="btn btn-primary"><%= buttonText %></button>
+  <a href="/suppliers" class="btn btn-secondary">Hủy</a>
+</div>

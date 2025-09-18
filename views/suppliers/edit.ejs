@@ -1,0 +1,18 @@
+
+
+<h1 class="mb-4">Sửa nhà cung cấp</h1>
+
+<form action="/suppliers/<%= supplier._id %>?_method=PUT" method="POST">
+  <div class="mb-3">
+    <label for="name" class="form-label">Tên nhà cung cấp</label>
+    <input type="text" id="name" name="name" class="form-control" value="<%= supplier.name %>" required>
+  </div>
+  
+  <div class="mb-3">
+    <label for="address" class="form-label">Địa chỉ</label>
+    <input type="text" id="address" name="address" class="form-control" value="<%= supplier.address %>">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Cập nhật</button>
+</form>
+

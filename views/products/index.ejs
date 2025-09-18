@@ -1,0 +1,46 @@
+<h1 class="mb-4">Danh sách sản phẩm</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <a href="/products/new" class="btn btn-success">➕ Tạo sản phẩm mới</a>
+
+  <form class="d-flex" method="get" action="/products">
+    <select name="supplier" class="form-select me-2" style="width: 200px;">
+      <option value="">Tất cả nhà cung cấp</option>
+      <% suppliers.forEach(s => { %>
+        <option value="<%= s._id %>" <%= selectedSupplier == s._id ? 'selected' : '' %>>
+          <%= s.name %>
+        </option>
+      <% }) %>
+    </select>
+    <input type="text" name="search" class="form-control me-2" placeholder="Tìm theo tên" value="<%= search || '' %>">
+    <button type="submit" class="btn btn-primary">Tìm</button>
+  </form>
+</div>
+
+<table class="table table-hover table-bordered shadow-sm">
+  <thead class="table-dark">
+    <tr>
+      <th>Tên</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
+      <th>Nhà cung cấp</th>
+      <th class="text-center">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.forEach(p => { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.price %></td>
+        <td><%= p.quantity %></td>
+        <td><%= p.supplier ? p.supplier.name : 'N/A' %></td>
+        <td class="text-center">
+          <a href="/products/<%= p._id %>/edit" class="btn btn-sm btn-warning">Sửa</a>
+          <form action="/products/<%= p._id %>?_method=DELETE" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-sm btn-danger">Xoá</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

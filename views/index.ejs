@@ -1,0 +1,49 @@
+
+<h1 class="text-center mb-4">Trang chủ</h1>
+
+<div class="row">
+  <!-- Sidebar - nhà cung cấp -->
+  <div class="col-md-3">
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-primary text-white">Nhà cung cấp</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="/products" class="text-decoration-none">Tất cả</a></li>
+        <% suppliers.forEach(s => { %>
+          <li class="list-group-item">
+            <a href="/products?supplier=<%= s._id %>" class="text-decoration-none">
+              <%= s.name %>
+            </a>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="col-md-9">
+    <!-- Search bar -->
+    <form class="d-flex mb-4" action="/products" method="get">
+      <input type="text" name="search" class="form-control me-2" placeholder="🔍 Tìm sản phẩm theo tên...">
+      <button class="btn btn-primary px-4" type="submit">Tìm</button>
+    </form>
+
+    <!-- Featured products -->
+    <h3 class="mb-3">Sản phẩm mẫu</h3>
+    <div class="row">
+      <% products.forEach(p => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card product-card shadow-sm h-100">
+            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="<%= p.name %>">
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= p.name %></h5>
+              <p class="card-text text-muted">Giá: <%= p.price %></p>
+              <span class="badge bg-info text-dark">
+                <%= p.supplier ? p.supplier.name : 'N/A' %>
+              </span>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>

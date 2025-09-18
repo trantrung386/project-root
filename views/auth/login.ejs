@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<% if (typeof error !== 'undefined') { %>
+  <p style="color:red;"><%= error %></p>
+<% } %>
+<form action="/auth/login" method="post">
+  <label>Username: <input name="username" required></label><br>
+  <label>Password: <input name="password" type="password" required></label><br>
+  <button type="submit">Login</button>
+</form>
+
+<a href="/auth/forgot">Quên mật khẩu?</a> | 
+<a href="/auth/register">Đăng ký</a> <!-- link đăng ký -->
